@@ -16,12 +16,13 @@ echo figure
 		if "%select.option%"=="y" (
 			goto launch
 		) else (
-			goto java
+			goto javains
 		)
 	:launch
 Curl -L -O https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.46.1/xmcl-0.46.1-win32-x64.zip
 	tar -xf xmcl-0.46.1-win32-x64.zip
 	echo "X Minecraft Launcher.exe" > winl.cmd && start winl.cmd
+:javains
 			set /p select.option2= Install Java? y/n: 
 		if "%select.option2%"=="y" (
 			goto java
@@ -29,8 +30,8 @@ Curl -L -O https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.
 			goto eof 
 		)
 	:java
-Curl -L -O "https://portableapps.com/redir2/?a=JDK64&s=s&d=pa&f=jdkPortable64_8_Update_411_online.paf.exe"
-echo "_a=JDK64&s=s&d=pa&f=jdkPortable64_8_Update_411_online.paf.exe" > winl.cmd && start winl.cmd
+curl -L --output update_online.paf.exe "https://portableapps.com/redir2/?a=JDK64&s=s&d=pa&f=jdkPortable64_8_Update_411_online.paf.exe"
+echo "update_online.paf.exe" > winl.cmd && start winl.cmd
 	start jdkPortable64_8_Update_411_online.paf.exe
 		echo The file path for java is C:\Users\%USERNAME%\Downloads\CommonFiles\JDK64\bin\javaw.exe
 echo save this file location for later.
